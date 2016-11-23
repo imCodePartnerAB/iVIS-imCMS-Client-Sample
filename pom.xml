@@ -2,8 +2,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.imcode.ivis</groupId>
+    <artifactId>ivis-imcms-client-sample</artifactId>
     <version>1.0.0-alpha1-SNAPSHOT</version>
-    <artifactId>ivis-client</artifactId>
     <packaging>war</packaging>
     <name>ivis-client Maven Webapp</name>
     <url>http://maven.apache.org</url>
@@ -213,6 +213,22 @@
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
+                    <attachClasses>true</attachClasses>
+                    <archiveClasses>true</archiveClasses>
+                    <!-- Copy resources into WEB-INF/classes dir -->
+                    <webResources>
+                        <resource>
+                            <directory>src/main/resources</directory>
+                            <targetPath>WEB-INF/classes</targetPath>
+                            <filtering>true</filtering>
+                        </resource>
+                    </webResources>
+                    <!--
+                                            War source directory must not be set to existing directory
+                                            since webappDirectory (the directory where the webapp is built) is created using ant script.
+
+                    -->
+                    <warSourceDirectory/>
                     <overlays>
                         <overlay>
                             <groupId>com.imcode.imcms</groupId>
@@ -224,6 +240,17 @@
                     </overlays>
                     <dependentWarExcludes>WEB-INF/lib/mysql*.jar</dependentWarExcludes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <dependencies>
+                    <dependency>
+                        <version>2.9</version>
+                        <groupId>org.apache.maven.wagon</groupId>
+                        <artifactId>wagon-ssh</artifactId>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -392,6 +419,18 @@
             <url>https://oss.sonatype.org/content/repositories/sourceforge-releases</url>
         </repository>
     </repositories>
+    <distributionManagement>
+        <repository>
+            <id>imcode</id>
+            <name>imCode Internal Repository</name>
+            <url>scp://repo.imcode.com:2022/srv/www/repo.imcode.com/maven2</url>
+        </repository>
+    </distributionManagement>
+    <scm>
+        <connection>scm:svn:https://svn.imcode.com/imcode/imcms/trunk</connection>
+        <developerConnection>scm:svn:https://svn.imcode.com/imcode/imcms/trunk</developerConnection>
+        <url/>
+    </scm>
     <pluginRepositories>
         <pluginRepository>
             <id>imcode</id>
