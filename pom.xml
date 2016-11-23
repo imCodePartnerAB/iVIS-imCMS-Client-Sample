@@ -175,6 +175,11 @@
         </dependency>
         <dependency>
             <groupId>com.imcode.ivis</groupId>
+            <artifactId>ivis-services</artifactId>
+            <version>1.0.0-alpha1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.imcode.ivis</groupId>
             <artifactId>ivis-sdk</artifactId>
             <version>1.0.0-alpha1-SNAPSHOT</version>
         </dependency>
