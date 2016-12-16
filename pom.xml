@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.imcode.ivis</groupId>
     <artifactId>ivis-imcms-client-sample</artifactId>
-    <version>1.0.0-alpha1</version>
+    <version>1.0.0-alpha2</version>
     <packaging>war</packaging>
     <name>ivis-client Maven Webapp</name>
     <url>http://maven.apache.org</url>
@@ -13,6 +13,7 @@
         <jackson.databind-version>2.4.0</jackson.databind-version>
         <spring-security.version>4.0.1.RELEASE</spring-security.version>
         <hibernate.version>4.3.10.Final</hibernate.version>
+        <ivis.version>1.0.0-alpha2</ivis.version>
     </properties>
     <dependencies>
 
@@ -171,17 +172,17 @@
         <dependency>
             <groupId>com.imcode.ivis</groupId>
             <artifactId>ivis-core</artifactId>
-            <version>1.0.0-alpha1</version>
+            <version>${ivis.version}</version>
         </dependency>
         <dependency>
             <groupId>com.imcode.ivis</groupId>
             <artifactId>ivis-services</artifactId>
-            <version>1.0.0-alpha1</version>
+            <version>${ivis.version}</version>
         </dependency>
         <dependency>
             <groupId>com.imcode.ivis</groupId>
             <artifactId>ivis-sdk</artifactId>
-            <version>1.0.0-alpha1</version>
+            <version>${ivis.version}</version>
         </dependency>
 
         <dependency>
